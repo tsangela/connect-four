@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background: antiquewhite;
+    background: papayawhip;
     position: relative;
     font: 14px "Andale Mono", monospace;
     /*margin: 20px;*/
@@ -27,9 +27,9 @@ ol, ul {
 
 .btn {
     padding: 10px;
-    background: white;
     border-radius: 5px;
-    border: 1px black solid;
+    background: white;
+    border: 1px salmon solid;
     -webkit-transition: ease 0.3s;
     -moz-transition: ease 0.3s;
     -ms-transition: ease 0.3s;
@@ -39,17 +39,17 @@ ol, ul {
 
 .btn:hover {
     color: white;
-    background: black;
-    border: 1px black solid;
+    background: salmon;
+    border: 1px salmon solid;
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: salmon;
 }
 
 a:visited {
-    color: black;
+    color: salmon;
 }
 
 .title {
