@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background: ghostwhite;
+    background: antiquewhite;
     position: relative;
     font: 14px "Andale Mono", monospace;
     /*margin: 20px;*/
@@ -27,8 +27,9 @@ ol, ul {
 
 .btn {
     padding: 10px;
-    background: aquamarine;
+    background: white;
     border-radius: 5px;
+    border: 1px black solid;
     -webkit-transition: ease 0.3s;
     -moz-transition: ease 0.3s;
     -ms-transition: ease 0.3s;
@@ -37,7 +38,9 @@ ol, ul {
 }
 
 .btn:hover {
-    background: #76e3ba;
+    color: white;
+    background: black;
+    border: 1px black solid;
 }
 
 a {
