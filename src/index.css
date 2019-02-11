@@ -53,8 +53,11 @@ a:visited {
 }
 
 .title {
-    font-style: italic;
+    /*padding: 5px;*/
+    /*background: white;*/
     margin-bottom: 10px;
+    font-style: italic;
+    text-decoration: overline;
 }
 
 .status {
