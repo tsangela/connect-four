@@ -101,10 +101,6 @@ a:visited {
     flex-direction: row;
 }
 
-.game-info {
-    /*margin-left: 20px;*/
-}
-
 .center {
     position: absolute;
     /*margin-left: auto;*/

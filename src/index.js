@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import calculateWinner from "./backend/calculateWinner";
+import {getHoverIndex, getDropIndex} from "./backend/boardIndexUtils";
 
 function Square(props) {
     return (
@@ -50,13 +52,8 @@ class Board extends React.Component {
         this.hoverCoinIn(n, next)
     }
 
-    getHoverIndex(i) {
-        let column = getContainingColumn(i);
-        return column[0];
-    }
-
     hoverCoinIn(n, next) {
-        let i = this.getHoverIndex(n);
+        let i = getHoverIndex(n);
         const hovers = this.state.hovers.slice();
         hovers[i] = <span style={{color: next}}>⬤</span>;
         this.setState({
@@ -65,7 +62,7 @@ class Board extends React.Component {
     }
 
     hoverCoinOut(n) {
-        let i = this.getHoverIndex(n);
+        let i = getHoverIndex(n);
         const hovers = this.state.hovers.slice();
         hovers[i] = '';
         this.setState({
@@ -171,9 +168,6 @@ class Board extends React.Component {
                 <div>
                     <a href="/" className="btn">
                         Restart game
-                        {/*<button>*/}
-                            {/*Restart game*/}
-                        {/*</button>*/}
                     </a>
                 </div>
             </div>
@@ -188,162 +182,9 @@ class Game extends React.Component {
                 <div className="game-board">
                     <Board />
                 </div>
-                <div className="game-info">
-                    <div>{/* status */}</div>
-                    <ol>{/* TODO */}</ol>
-                </div>
             </div>
         );
     }
-}
-
-function getDropIndex(n, squares) {
-    // console.log('n = ' + n);
-    let column = getContainingColumn(n);
-    // console.log('column = ' + column);
-    for (let i = column.length - 1; i >= 0; --i) {
-        let index = column[i];
-        // console.log('squares[index] = ' + squares[index]);
-        if (!squares[index]) {
-            // console.log('index = ' + index);
-            return index;
-        }
-    }
-    return -1;
-}
-
-const columns = getColumns();
-// console.log(JSON.stringify(columns));
-
-function getColumns() {
-    let columns = [];
-    for (let i = 0; i <= 6; ++i) {
-        let column = [];
-        let a = i + 35;
-        for (let j = i; j <= a; j+=7) {
-            column.push(j);
-        }
-        columns.push(column);
-    }
-    return columns;
-}
-
-function getContainingColumn(n) {
-    for (let i = 0; i < columns.length; ++i) {
-        let column = columns[i];
-        if (column.includes(n)) {
-            return column;
-        }
-    }
-    return null;
-}
-
-const lines = getLines();
-// console.log(lines);
-
-function calculateWinner(squares) {
-    // console.log('In calculateWinner');
-    for (let i = 0; i < lines.length; ++i) {
-        const [a, b, c, d] = lines[i];
-        if (validateSquares(squares, lines[i])
-            && squares[a].props.style.color === squares[b].props.style.color
-            && squares[a].props.style.color === squares[c].props.style.color
-            && squares[a].props.style.color === squares[d].props.style.color) {
-            return squares[a].props.style.color;
-        }
-    }
-    return null;
-}
-
-function validateSquares(squares, line) {
-    const [a, b, c, d] = line;
-    return squares[a] && squares[b] && squares[c] && squares[d]
-        && squares[a].props && squares[b].props && squares[c].props && squares[d].props
-        && squares[a].props.style && squares[b].props.style && squares[c].props.style && squares[d].props.style
-}
-
-function getLines() {
-    const lines = [];
-    addSW(lines);
-    addNS(lines);
-    addEW(lines);
-    addSE(lines);
-    return lines;
-}
-
-function addEW(lines) {
-    // console.log('EAST-WEST');
-    // let ew_lines = [];
-    for (let i = 0; i <= 35; i+=7) {
-        const a = i + 3;
-        for (let j = i; j <= a; ++j) {
-            const b = j + 3;
-            let line = [];
-            for (let k = j; k <= b; ++k) {
-                line.push(k.toString());
-            }
-            // ew_lines.push(line);
-            lines.push(line);
-        }
-    }
-    // return ew_lines;
-}
-
-function addNS(lines) {
-    // console.log('NORTH-SOUTH');
-    // let ns_lines = [];
-    for (let i = 0; i <= 14; i+=7) {
-        const a = i + 6;
-        for (let j = i; j <= a; ++j) {
-            const b = j + 21;
-            let line = [];
-            for (let k = j; k <= b; k+=7) {
-                line.push(k.toString());
-            }
-            // console.log(line.toString());
-            // ns_lines.push(line)
-            lines.push(line);
-        }
-    }
-    // return ns_lines;
-}
-
-function addSE(lines) {
-    // console.log('SOUTH-EAST');
-    // let se_lines = [];
-    for (let i = 0; i <= 14; i+=7) {
-        const a = i + 3;
-        for (let j = i; j <= a; ++j) {
-            const b = j + 24;
-            let line = [];
-            for (let k = j; k <= b; k+=8) {
-                line.push(k.toString());
-            }
-            // console.log(line.toString());
-            // se_lines.push(line);
-            lines.push(line);
-        }
-    }
-    // return se_lines;
-}
-
-function addSW(lines) {
-    // console.log('SOUTH-WEST');
-    // let sw_lines = [];
-    for (let i = 3; i <= 17; i+=7) {
-        const a = i + 3;
-        for (let j = i; j <= a; ++j) {
-            const b = j + 18;
-            let line = [];
-            for (let k = j; k <= b; k+=6) {
-                line.push(k.toString());
-            }
-            // console.log(line.toString());
-            // sw_lines.push(line);
-            lines.push(line);
-        }
-    }
-    // return sw_lines;
 }
 
 // ========================================
