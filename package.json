@@ -2,7 +2,7 @@
   "name": "connect-four",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://tsangela.github.io/connect-four",
+  "homepage": "https://tsangela.github.io/connect-four",
   "dependencies": {
     "react": "^16.8.1",
     "react-dom": "^16.8.1",

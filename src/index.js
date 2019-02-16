@@ -169,7 +169,7 @@ class Board extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <a href="" className="btn">
+                    <a href="/" className="btn">
                         Restart game
                         {/*<button>*/}
                             {/*Restart game*/}
