@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import calculateWinner from "./backend/calculateWinner";
 import {getHoverIndex, getDropIndex} from "./backend/boardIndexUtils";
+import NavButtons from "./components/NavButtons";
+import RestartButton from "./components/RestartButton";
 
 function Square(props) {
     return (
@@ -165,11 +167,8 @@ class Board extends React.Component {
                         {this.renderSquare(41)}
                     </div>
                 </div>
-                <div>
-                    <a href="/" className="btn">
-                        Restart game
-                    </a>
-                </div>
+                <RestartButton/>
+                <NavButtons/>
             </div>
         );
     }
