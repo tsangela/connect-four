@@ -25,31 +25,27 @@ ol, ul {
     display: table;
 }
 
-.btn {
+div.btn a {
     padding: 10px;
     border-radius: 5px;
-    background: white;
-    border: 1px salmon solid;
+    border: 1px black solid;
     -webkit-transition: ease 0.3s;
     -moz-transition: ease 0.3s;
     -ms-transition: ease 0.3s;
     -o-transition: ease 0.3s;
     transition: ease 0.3s;
-}
-
-.btn:hover {
-    color: white;
-    background: salmon;
-    border: 1px salmon solid;
-}
-
-a {
     text-decoration: none;
-    color: salmon;
 }
 
-a:visited {
-    color: salmon;
+div.btn a:visited {
+    color: black;
+}
+
+div.btn a:hover {
+    color: white;
+    background: black;
+    border: 1px black solid;
+    font-style: italic;
 }
 
 .title {
@@ -65,6 +61,11 @@ a:visited {
     color: white;
     padding: 5px;
     /*font-style: italic;*/
+    transition: .3s ease;
+}
+
+.status:hover {
+    letter-spacing: 2px;
 }
 
 .square {
@@ -112,4 +113,22 @@ a:visited {
     text-align: center;
     min-width: 100%;
     top: 20px;
+}
+
+div.nav-container {
+    margin-top: 20px;
+}
+
+div.nav-container a:visited {
+    color: peachpuff;
+}
+
+i.nav-btn {
+    transition: .3s ease;
+    margin: 8px;
+    color: peachpuff;
+}
+
+i.nav-btn:hover {
+    color: darksalmon;
 }
