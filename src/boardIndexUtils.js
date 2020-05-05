@@ -11,14 +11,10 @@ export function getContainingColumn(n) {
 }
 
 export function getDropIndex(n, squares) {
-    // console.log('n = ' + n);
     let column = getContainingColumn(n);
-    // console.log('column = ' + column);
     for (let i = column.length - 1; i >= 0; --i) {
         let index = column[i];
-        // console.log('squares[index] = ' + squares[index]);
         if (!squares[index]) {
-            // console.log('index = ' + index);
             return index;
         }
     }

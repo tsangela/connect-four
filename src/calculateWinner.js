@@ -2,7 +2,6 @@ import {lines} from "./lines";
 import {validateSquares} from "./validateSquares";
 
 export default function calculateWinner(squares) {
-    // console.log('In calculateWinner');
     for (let i = 0; i < lines.length; ++i) {
         const [a, b, c, d] = lines[i];
         if (validateSquares(squares, lines[i])
