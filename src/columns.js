@@ -1,5 +1,4 @@
 export const columns = getColumns();
-// console.log(JSON.stringify(columns));
 
 function getColumns() {
     let columns = [];
